@@ -240,10 +240,6 @@ int main(int argc, char* argv[])
         for (int i = 1; i < parser.positionalArguments().size(); ++i) {
             const QString url = QFileInfo(parser.positionalArguments().at(i)).absoluteFilePath();
             quint64 id = filePathToId(QFile::encodeName(url));
-            if (id == 0) {
-                out << "Could not stat file: " << url << endl;
-                continue;
-            }
             if (tr.documentData(id).isEmpty()) {
                 out << "Skipping: " << url << " Reason: Not yet indexed\n";
                 continue;
